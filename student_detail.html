@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style_studentdetail.css">
+</head>
+<body>
+    <div class="navbar-container">
+        <div class="logo-container">
+            <img src="assets/logoptit.png" alt="" id="logo-ptit">
+            <h2>Admin PTIT</h2>
+        </div>
+
+        <div class="menu-container">
+            <ul>
+                <li id="test" >
+                    <i class="fa-solid fa-list"></i>
+                    <a href="dashboard.html">Danh Sách Kỳ Thi</a>
+                </li>
+                <li id="user" >
+                    <i class="fa-solid fa-user"></i>
+                    <a  href="studentmanager.html">Danh Sách Người Dùng</a>
+                </li>
+                <li id="analyis">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <a href="analyis.html">Thống Kê Chi Tiết</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="social-container">
+            <ul>
+                <li><i class="fa-brands fa-facebook"></i></li>
+                <li><i class="fa-brands fa-square-instagram"></i></li>
+                <li><i class="fa-brands fa-square-threads"></i></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="main-container">
+        <div class="nav-menu">
+            <ul>
+                <li><i class="fa-solid fa-bell"></i></li>
+                <li>Đào Tùng Lâm</li>
+                <li><img src="assets/haitu.jpg" alt="" id="haitu_avatar"></li>
+                <li><i class="fa-solid fa-right-from-bracket"></i></li>
+            </ul>
+        </div>
+        <div class="thongke">
+            <div class="student_info">
+                <h3 style="text-align: center; margin-top: 20px; font-weight: bold; font-size: 30px;">Thông Tin Sinh Viên</h3>
+                <div id="nothing">
+                    <div id="info">
+                        <p>Mã Sinh Viên: <span style="font-weight: bold;">B21DCCN475</span></p>
+                        <p>Họ Và Tên: <span style="font-weight: bold;">Lê Quang Hải Tú</span></p>
+                        <p>Email: <span style="font-weight: bold;">haitu@mtpentertainment.vn</span></p>
+                        <p>Ngày Sinh: <span style="font-weight: bold;">04/07/2003</span></p>
+                        <p>Đia Chỉ: <span style="font-weight: bold;">Ho Chi Minh City</span></p>
+                    </div>
+                    <img src="assets/haitu.jpg" alt="" id="haitu_avatar_1">
+                </div>
+            </div>
+            <div class="analyis-test">
+                <div class="number-test">
+                    <div>
+                        <i class="fa-sharp fa-solid fa-hashtag"></i>
+                        <p id="test-content">Đã Làm</p>
+                    </div>
+                
+                    <p id="test-number">39</p>
+                </div>
+                <div class="number-test">
+                    <div>
+                        <i id="plus" class="fa-solid fa-plus"></i>
+                        <p id="test-content">Chưa Làm</p>
+                    </div>
+                    <p id="test-number">10</p>
+                </div>
+                <div class="number-test">
+                    <div>
+                        <i class="fa-solid fa-chart-line"></i>
+                        <p id="test-content">Điểm Trung Bình</p>
+
+                    </div>
+                
+                    <p id="test-number">9/10</p>
+                </div>
+                <div class="number-test">
+                    <div>
+                        <i class="fa-solid fa-bolt"></i>
+                        <p id="test-content">Vi Phạm</p>
+                    </div>
+                    <p id="test-number">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="test-list">
+
+            <div class="main-content">
+                <div class="tool-bar">
+                    <div class="setting-container">
+                        <div class="add-test">
+                            <i class="fa-solid fa-plus"></i>
+                            <button id="addtest" onclick="addquiz()">Thêm Mới</button>
+                        </div>
+                        <div class="edit-test">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <button id="edittest" onclick="edit_test()">Chỉnh Sửa</button>
+                        </div>
+                        <div class="delete-test">
+                            <i class="fa-solid fa-trash"></i>
+                            <button id="edittest" onclick="btn_delete_row()">Xóa</button>
+                        </div>
+                        <div class="select-test">
+                            <i class="fa-solid fa-square-check"></i>
+                            <button id="edittest" onclick="select_all()">Chọn Tất Cả</button>
+                        </div>
+                        <div class="un-select-test">
+                            <i class="fa-solid fa-square-check"></i>
+                            <button id="unselecttest" onclick="un_select_all()">Bỏ Chọn</button>
+                        </div>
+                    </div>
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" id="search-tool" placeholder="Search....">
+                    </div>
+                </div>
+                <div class="table-data">
+                    <table id="table-of-test">
+                        <thead>
+                            <tr>
+                                <th>Chọn</th>
+                                <th>Tên Bài Thi</th>
+                                <th>Kỳ Thi</th>
+                                <th>Ngày Thi</th>
+                                <th>Điểm</th>
+                                <th>Số Lượt Làm Bài</th>
+                                <th>Trạng Thái</th>
+                                <th>Chi Tiết</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-test">
+                            
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="add-container hide">
+        <div class="form-create">
+          
+        </div>
+    </div>
+        
+    
+    <script src="backjs/student_detail.js"></script>
+
+
+</body>
+</html>

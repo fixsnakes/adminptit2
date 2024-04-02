@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style_dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="navbar-container">
+        <div class="logo-container">
+            <img src="assets/logoptit.png" alt="" id="logo-ptit">
+            <h2>Admin PTIT</h2>
+        </div>
+
+        <div class="menu-container">
+            <ul>
+                <li id="test" >
+                    <i class="fa-solid fa-list"></i>
+                    <a href="dashboard.html">Danh Sách Kỳ Thi</a>
+                </li>
+                <li id="user" >
+                    <i class="fa-solid fa-user"></i>
+                    <a  href="studentmanager.html">Danh Sách Người Dùng</a>
+                </li>
+                <li id="analyis">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <a href="studentmanager.html">Thống Kê Chi Tiết</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="social-container">
+            <ul>
+                <li><i class="fa-brands fa-facebook"></i></li>
+                <li><i class="fa-brands fa-square-instagram"></i></li>
+                <li><i class="fa-brands fa-square-threads"></i></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="main-container">
+        <div class="nav-menu">
+            <ul>
+                <li><i class="fa-solid fa-bell"></i></li>
+                <li>Đào Tùng Lâm</li>
+                <li><img src="assets/haitu.jpg" alt="" id="haitu_avatar"></li>
+                <li><i class="fa-solid fa-right-from-bracket"></i></li>
+            </ul>
+        </div>
+        <div class="test-list">
+            <div class="analyis-test">
+                <div class="number-test">
+                    <div>
+                        <i class="fa-sharp fa-solid fa-hashtag"></i>
+                        <p id="test-content">Bài Thi</p>
+                    </div>
+                   
+                    <p id="test-number">48</p>
+                </div>
+                <div class="number-test">
+                    <div>
+                        <i class="fa-solid fa-star"></i>
+                        <p id="test-content">Bài Luyện Tập</p>
+                    </div>
+                    <p id="test-number">30</p>
+                </div>
+                <div class="number-test">
+                    <div>
+                        <i class="fa-solid fa-pen-nib"></i>
+                        <p id="test-content">Bài Giữa Kỳ</p>
+
+                    </div>
+                   
+                    <p id="test-number">10</p>
+                </div>
+                <div class="number-test">
+                    <div>
+                        <i class="fa-solid fa-bolt"></i>
+                        <p id="test-content">Bài Cuối Kỳ</p>
+                    </div>
+                    <p id="test-number">8</p>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="tool-bar">
+                    <div class="setting-container">
+                        <div class="add-test">
+                            <i class="fa-solid fa-plus"></i>
+                            <button id="addtest" onclick="addquiz()">Thêm Mới</button>
+                        </div>
+                        <div class="edit-test">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <button id="edittest" onclick="edit_test()">Chỉnh Sửa</button>
+                        </div>
+                        <div class="delete-test">
+                            <i class="fa-solid fa-trash"></i>
+                            <button id="edittest" onclick="btn_delete_row()">Xóa</button>
+                        </div>
+                        <div class="select-test">
+                            <i class="fa-solid fa-square-check"></i>
+                            <button id="edittest" onclick="select_all()">Chọn Tất Cả</button>
+                        </div>
+                        <div class="un-select-test">
+                            <i class="fa-solid fa-square-check"></i>
+                            <button id="unselecttest" onclick="un_select_all()">Bỏ Chọn</button>
+                        </div>
+                    </div>
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" id="search-tool" placeholder="Search....">
+                    </div>
+                </div>
+                <div class="table-data">
+                    <table id="table-of-test">
+                        <thead>
+                            <tr>
+                                <th>Chọn</th>
+                                <th>Tên Bài Thi</th>
+                                <th>Kỳ Thi</th>
+                                <th>Ngày Thi</th>
+                                <th>Ngày Tạo</th>
+                                <th>Số Lượt Làm Bài</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-test">
+
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="add-container hide">
+        <div class="form-create">
+            <div class="form-navbar"></div>
+            <div class="form-question">
+                <h1>Bảng Câu Hỏi</h1>
+                <div class="question-content">
+                    <div class="question-detail" id="question-detail">
+                        <div class="quiz-detail" id="quiz-detail-1">
+                            <div class="cauhoi" id="cauhoi-1">
+                                <p >Câu <input class="input-stt" type="text" placeholder="..."></p>
+                                <input id="cau-hoi-1" class="input-cauhoi" type="text" placeholder="Hãy Nhập Câu Hỏi.....">
+                                <button id="delete" onclick="xoacauhoi('quiz-detail-1')">Xóa</button>
+                            </div>
+
+                            <div class="dapan">
+                                <div class="answer-content">
+                                    <p id="answer-content-1">A.</p>
+                                    <input type="text" id="A-1">
+                                </div>
+                                <div class="answer-content">
+                                    <p id="answer-content-1">B.</p>
+                                    <input type="text" id="B-1">
+                                </div>
+                                <div class="answer-content">
+                                    <p id="answer-content-1">C.</p>
+                                    <input type="text" id="C-1">
+                                </div>
+                                <div class="answer-content">
+                                    <p id="answer-content-1">D.</p>
+                                    <input type="text" id="D-1">
+                                </div>
+                              
+                            </div>
+
+
+                            <div class="choice-correct">
+                                <h3>Chọn Đáp Án Đúng</h2>
+                                <div class="btn-choice">
+                                    <button id="btn1-cau-1" onclick="checkbtn('1','1')">A</button>
+                                    <button id="btn2-cau-1" onclick="checkbtn('2','1')">B</button>
+                                    <button id="btn3-cau-1" onclick="checkbtn('3','1')">C</button>
+                                    <button id="btn4-cau-1" onclick="checkbtn('4','1')">D</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="setting-box">
+                        <h3>Cài Đặt</h3>
+                        <div class="setting-options">
+                            <p style="font-size: 20px;">Tạo Bài Thi Từ Excel:</p>
+                            <input type="file" id="fileinput">
+                            <div class="info">
+                                <p>Tên Kỳ Thi:</p>
+                                <input type="text" id="name-test">
+                            </div>
+                            
+                            <div class="info">
+                                <p>Mô Tả:</p>
+                                <input type="text" id="des-test">
+                            </div>
+
+                            <div class="info">
+                                <p>Tự Do/Ngày Thi:</p>
+                                <input type="text" id="date-test">
+                            </div>
+                          
+                        </div>
+                        <div class="btn-setting">
+                            <button id="add-question" onclick="addquestion()">Thêm Câu Hỏi</button>
+                            <button id="save-question" onclick="save_question()">Lưu</button>
+                            <button id="exit" onclick="exit()">Thoát</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="backjs/dashboard.js"></script>
+
+
+</body>
+</html>
